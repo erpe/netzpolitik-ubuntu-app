@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=netzpolitik
+Exec=qmlscene $@ Main.qml
+Icon=netzpol.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+

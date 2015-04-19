@@ -1,0 +1,49 @@
+import QtQuick 2.0
+
+import Ubuntu.Components 1.1
+
+import 'javascript/main.js' as Logic
+
+/*!
+    \brief MainView with a Label and Button elements.
+*/
+import QtQuick.XmlListModel 2.0
+
+MainView {
+    objectName: "mainView"
+    applicationName: "netzpol.rene-so36"
+
+    /*
+     This property enables the application to change orientation
+     when the device is rotated. The default is false.
+    */
+    //automaticOrientation: true
+
+    useDeprecatedToolbar: false
+
+    width: units.gu(100)
+    height: units.gu(75)
+
+    Page {
+      title: "Netzpolitik" + feedListModel.count
+
+      Row {
+          id: row1
+          x: 26
+          height: 50
+        Image {
+        source: "header.png"
+      }
+
+      ListView {
+        anchors.top: parent.height + 100
+        id: listView
+        y: 150
+        spacing: 5
+
+        model: FeedListModel{id: feedListModel}
+        delegate: ArticleDelegate{}
+      }
+    }
+   }
+}
