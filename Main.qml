@@ -3,36 +3,50 @@ import Ubuntu.Components 1.1
 
 MainView {
   objectName: "mainView"
-  applicationName: 'netzpol.rene-so36'
-
-  useDeprecatedToolbar: true
-
+  applicationName: 'netzpolitik.rene-so36'
+  useDeprecatedToolbar: false
   width: units.gu(100)
-  height: units.gu(75)
-  Column {
-      width: parent.width
-      height: parent.height
+  height: units.gu(70)
+  automaticOrientation : true
+
+  PageStack {
+    id: pageStack
+    Component.onCompleted: push(listPage)
+
     Page {
-      id: page1
-      width: parent.width
-      height: parent.height
-
+      id: listPage
       title: "Netzpolitik"
+      head.contents: Image {
+        fillMode: Image.PreserveAspectFit
+        source: "header.png"
+      }
 
-      Row {
-        width: parent.width
+      UbuntuListView {
+        id: listView
         height: parent.height
-        anchors.top: parent.top
-        anchors.topMargin: 80
+        width: parent.width
 
-        UbuntuListView {
-          id: listView
-          //spacing: 5
-          height: parent.height
+        model: FeedListModel{id: feedListModel}
+        delegate: ArticleDelegate{}
+      }
+    }
+
+    Page {
+      id: articlePage
+      title: "Artikel"
+      visible: false
+
+      Flickable {
+        id: content
+        anchors.fill: parent
+        contentHeight:  articleContent.height
+
+        Text {
+          id: articleContent
           width: parent.width
-
-          model: FeedListModel{id: feedListModel}
-          delegate: ArticleDelegate{}
+          wrapMode: Text.WordWrap
+          onLinkActivated: Qt.openUrlExternally(link)
+          text: ''
         }
       }
     }

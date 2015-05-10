@@ -6,7 +6,8 @@ ListItem.Subtitled {
 
 
     function getTruncatedTitle(txt) {
-      return txt.substring(0,45);
+      //return txt.substring(0,45);
+      return txt
     }
 
     function getAuthor() {
@@ -15,14 +16,18 @@ ListItem.Subtitled {
 
     function formatDate(date) {
       //d = new Date(date);
-      return date;
+      return date.split("+")[0];
     }
 
     text: title
     subText: formatDate(pubDate) + " -  " + author
     selected: false
     progression: true
-    iconName: "view-fullscreen"
-    onClicked: console.log("yi: " + container.getAuthor())
+    iconName: "view-expand"
+    onClicked: {
+        articlePage.title = title
+        articleContent.text =  content
+        pageStack.push(articlePage, index )
+    }
 
 }

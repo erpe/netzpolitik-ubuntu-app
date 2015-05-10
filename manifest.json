@@ -1,17 +1,15 @@
 {
-    "name": "netzpol.rene-so36",
-    "description": "description of netzpol",
+    "name": "netzpolitik.rene-so36",
+    "description": "netzpolitik.org  app",
     "architecture": "all",
-    "title": "netzpol",
+    "title": "netzpolitik",
     "hooks": {
         "netzpolitik": {
             "apparmor": "netzpolitik.apparmor",
-            "desktop":  "netzpolitik.desktop"
+            "desktop": "netzpolitik.desktop"
         }
     },
     "version": "0.1",
     "maintainer": "rene paulokat <rene@so36.net>",
-    "framework" : "ubuntu-sdk-14.10-qml"
+    "framework": "ubuntu-sdk-14.10-qml"
 }
-
-
