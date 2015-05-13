@@ -5,13 +5,24 @@ MainView {
   objectName: "mainView"
   applicationName: 'netzpolitik.rene-so36'
   useDeprecatedToolbar: false
-  width: units.gu(100)
-  height: units.gu(70)
+  width: units.gu(70)
+  height: units.gu(100)
   automaticOrientation : true
 
   PageStack {
     id: pageStack
     Component.onCompleted: push(listPage)
+
+    Page {
+      id: noticePage
+      title: 'Log...'
+      Text {
+        id: noticeContent
+        width: parent.width - units.gu(2)
+        wrapMode: Text.WordWrap
+        text: ''
+      }
+    }
 
     Page {
       id: listPage
@@ -20,12 +31,9 @@ MainView {
         fillMode: Image.PreserveAspectFit
         source: "header.png"
       }
-
       UbuntuListView {
         id: listView
-        height: parent.height
-        width: parent.width
-
+        anchors.fill: parent
         model: FeedListModel{id: feedListModel}
         delegate: ArticleDelegate{}
       }
@@ -40,10 +48,11 @@ MainView {
         id: content
         anchors.fill: parent
         contentHeight:  articleContent.height
+        leftMargin: units.gu(1)
 
         Text {
           id: articleContent
-          width: parent.width
+          width: parent.width - units.gu(2)
           wrapMode: Text.WordWrap
           onLinkActivated: Qt.openUrlExternally(link)
           text: ''

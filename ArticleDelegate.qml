@@ -4,7 +4,6 @@ import Ubuntu.Components.ListItems 1.0 as ListItem
 ListItem.Subtitled {
     id: container
 
-
     function getTruncatedTitle(txt) {
       //return txt.substring(0,45);
       return txt
@@ -29,5 +28,4 @@ ListItem.Subtitled {
         articleContent.text =  content
         pageStack.push(articlePage, index )
     }
-
 }

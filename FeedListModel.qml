@@ -13,4 +13,22 @@ XmlListModel {
   XmlRole { name: "pubDate"; query: "pubDate/string()"; }
   XmlRole { name: "description"; query: "description/string()"; }
   XmlRole { name: "content"; query: "content:encoded/string()"; }
+
+  onStatusChanged: {
+    if (status === XmlListModel.Loading) 
+      console.log("Loading...")
+      noticeContent.text = "Loading..."
+      pageStack.push(noticePage)
+    if (status === XmlListModel.Ready) {
+      console.log("Loaded " + source)
+      if (status === XmlListModel.Error) {
+        console.log("XmlError: " + errorString())
+        noticeContent.text = "Error loading: " + errorString()
+        pageStack.push(noticePage)
+      } else {
+        pageStack.clear()
+        pageStack.push(listPage)
+      }
+    }
+  }
 }
