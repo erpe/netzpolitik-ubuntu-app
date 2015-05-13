@@ -3,6 +3,7 @@ import QtQuick.XmlListModel 2.0
 import Ubuntu.Components 1.1
 
 XmlListModel {
+  id: feedListModel
   source: "http://netzpolitik.org/feed"
   query: "/rss/channel/item"
 

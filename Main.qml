@@ -36,6 +36,13 @@ MainView {
         anchors.fill: parent
         model: FeedListModel{id: feedListModel}
         delegate: ArticleDelegate{}
+
+        PullToRefresh {
+          refreshing: listView.model.status === feedListModel.Loading
+          onRefresh: listView.model.reload()
+        }
+
+        
       }
     }
 

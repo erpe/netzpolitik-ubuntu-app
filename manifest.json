@@ -9,7 +9,7 @@
             "desktop": "netzpolitik.desktop"
         }
     },
-    "version": "0.1.1",
+    "version": "0.2.0",
     "maintainer": "rene paulokat <rene@so36.net>",
     "framework": "ubuntu-sdk-14.10-qml"
 }
