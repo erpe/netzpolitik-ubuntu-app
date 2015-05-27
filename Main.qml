@@ -41,8 +41,6 @@ MainView {
           refreshing: listView.model.status === feedListModel.Loading
           onRefresh: listView.model.reload()
         }
-
-        
       }
     }
 
@@ -54,15 +52,37 @@ MainView {
       Flickable {
         id: content
         anchors.fill: parent
-        contentHeight:  articleContent.height
+        contentHeight:  articleContentText.height + units.gu(6)
         leftMargin: units.gu(1)
 
-        Text {
-          id: articleContent
-          width: parent.width - units.gu(2)
-          wrapMode: Text.WordWrap
-          onLinkActivated: Qt.openUrlExternally(link)
-          text: ''
+        Column {
+          id: headerColumn
+          width: parent.width
+          height: units.gu(2)
+
+          Text {
+            id: articleHeading
+            width: parent.width - units.gu(2)
+            wrapMode: Text.WordWrap
+            onLinkActivated: Qt.openUrlExternally(link)
+            font.italic: true
+            verticalAlignment: Text.AlignVCenter
+            text: ''
+          }
+        }
+
+        Column {
+          width: parent.width
+          anchors.top: headerColumn.bottom
+          anchors.topMargin: units.gu(2)
+
+          Text {
+            id: articleContentText
+            width: parent.width - units.gu(2)
+            wrapMode: Text.WordWrap
+            onLinkActivated: Qt.openUrlExternally(link)
+            text: ''
+          }
         }
       }
     }
