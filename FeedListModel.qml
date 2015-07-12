@@ -4,7 +4,7 @@ import Ubuntu.Components 1.1
 
 XmlListModel {
   id: feedListModel
-  source: "http://netzpolitik.org/feed"
+  source: "http://netzpolitik.org/feed?pk_campaign=ubuntu-touch-app"
   query: "/rss/channel/item"
 
   namespaceDeclarations: "declare namespace dc='http://purl.org/dc/elements/1.1/'; declare namespace content='http://purl.org/rss/1.0/modules/content/';"
